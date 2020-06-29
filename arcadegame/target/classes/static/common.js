@@ -7,7 +7,7 @@ var myMisileY = canvas.height-30;
 var enemyMisileX = -10;
 var enemyMisileY = 0;
 // 敵のミサイルの速度
-var enemyMisileDy = 12;
+var enemyMisileDy = 8.5;
 var enemyMisileExist = false;
 var startFlag = true;
 var hitStatus = true;
@@ -31,7 +31,7 @@ var brickHeight = 50;
 var brickPadding = 30;
 
 var brickOffsetTop = 40;
-var brickOffsetLeft = 40;
+var brickOffsetLeft = 33;
 var score = 0;
 
 var lives = 2;
@@ -195,7 +195,7 @@ var enemyPosition = setInterval(function(){
     }
     if(moveCount % 10 == 8){
         moveX = 0;
-        moveY = 20;
+        moveY = 15;
         rightFlag = -rightFlag;
     } else {
         moveX = rightFlag*5;
@@ -207,7 +207,7 @@ var enemyPosition = setInterval(function(){
         }
     }
     moveCount++;
-}, 1000);
+}, 1500);
 
 /* パドル位置の取得 */
 function mouseMoveHandler(e) {
@@ -307,7 +307,7 @@ function drawScore() {
 function drawLives() {
   ctx.font = "30px Arial";
   ctx.fillStyle = "#fff";
-  ctx.fillText("Lives: "+lives, canvas.width-155, 30);
+  ctx.fillText("Life: "+lives, canvas.width-155, 30);
 }
 
 /* 描画 */
@@ -320,7 +320,7 @@ function draw() {
   drawLives();
   collisionDetection();
 
-    enemyMisileY += enemyMisileDy + 0.1*moveCount;
+    enemyMisileY += enemyMisileDy + 0.05*moveCount;
     if(enemyMisileY>canvas.height){
         enemyMisileExist = false;
         hitStatus = true;
@@ -351,9 +351,6 @@ function draw() {
     if(myMisileY > enemyMisileY-ballRadius && enemyMisileY+ballRadius > myMisileY){
         if(myMisileX > enemyMisileX-ballRadius*2 && enemyMisileX+ballRadius*2 > myMisileX){
             console.log("MISILE同士がhit");
-            enemyMisileExist = false;
-            mouseClicked = false;
-            myMisileY = canvas.height-30;
         }
     }
   requestAnimationFrame(draw);
