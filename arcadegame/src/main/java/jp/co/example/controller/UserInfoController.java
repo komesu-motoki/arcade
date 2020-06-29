@@ -65,7 +65,7 @@ public class UserInfoController {
 		if (session.getAttribute("loginId").equals(userInfoform.getLoginId())
 				&& session.getAttribute("userName").equals(userInfoform.getUserName())
 				&& session.getAttribute("password").equals(userInfoform.getPassword())) {
-			model.addAttribute("msg", "値を一つ以上変更してください");
+			model.addAttribute("msg", "一つ以上変更してください");
 			return "userInfoChange";
 		}
 
