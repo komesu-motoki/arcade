@@ -21,18 +21,23 @@
 		<div id="form-btn-center">
 			<div id="form-div">
 				<div>
-					<p class="form-item inline">ID</p>
-					<p class="text-design-id inline">${list.loginId}</p>
+
+					<label for="" class="form-item">ID</label><input type="text"
+						class="text-design-id text-box" value="${sessionScope.loginId}"
+						readonly>
 				</div>
 				<br>
 				<div>
-					<p class="form-item inline">名前</p>
-					<p class="text-design-name inline">${list.userName}</p>
+					<label for="" class="form-item">名前</label><input type="text"
+						class="text-design-name text-box" value="${sessionScope.userName}"
+						readonly>
 				</div>
 				<br>
 				<div>
-					<p class="form-item inline">PASS</p>
-					<p class="text-design-pass inline">${list.password}</p>
+					<label for="" class="form-item">PASS</label><input type="password"
+						class="text-design-pass text-box" value="${sessionScope.password}"
+						readonly>
+
 				</div>
 			</div>
 		</div>

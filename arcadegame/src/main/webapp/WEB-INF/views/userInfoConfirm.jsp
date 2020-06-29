@@ -36,7 +36,7 @@
 			</div>
 			<br>
 			<div>
-				<label for="" class="form-item">PASS</label><input type="text"
+				<label for="" class="form-item">PASS</label><input type="password"
 					class="text-design-pass text-box" value="${sessionScope.Password}"
 					readonly>
 			</div>

@@ -22,18 +22,22 @@
 	<div id="form-btn-center">
 		<div id="form-div">
 			<div>
-				<p class="form-item inline">ID</p>
-				<p class="text-design-id inline">${sessionScope.LoginId}</p>
+				<label for="" class="form-item">ID</label><input type="text"
+					class="text-design-id text-box" value="${sessionScope.LoginId}"
+					readonly>
 			</div>
 			<br>
 			<div>
-				<p class="form-item inline">名前</p>
-				<p class="text-design-name inline">${sessionScope.UserName}</p>
+				<label for="" class="form-item">名前</label><input type="text"
+					class="text-design-name text-box" value="${sessionScope.UserName}"
+					readonly>
+
 			</div>
 			<br>
 			<div>
-				<p class="form-item inline">PASS</p>
-				<p class="text-design-pass inline">${sessionScope.Password}</p>
+				<label for="" class="form-item">PASS</label><input type="password"
+					class="text-design-pass text-box" value="${sessionScope.Password}"
+					readonly>
 			</div>
 		</div>
 	</div>
