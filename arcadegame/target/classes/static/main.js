@@ -118,8 +118,8 @@ document.body.addEventListener('keydown',
     		  setTimeout(ballRadius, 10000)
     	  }
         item1Flag = false;
-        $('.box1').remove();
-        $('.item-name1').remove();
+        $('.box1').css('visibility','hidden');
+        $('.item-name1').css('visibility','hidden');
       }
     });
 document.body.addEventListener('keydown',
@@ -138,8 +138,8 @@ document.body.addEventListener('keydown',
     		  setTimeout(ballRadius, 10000)
     	  }
         item2Flag = false;
-        $('.box2').remove();
-        $('.item-name2').remove();
+        $('.box2').css('visibility','hidden');
+        $('.item-name2').css('visibility','hidden');
       }
     });
 document.body.addEventListener('keydown',
@@ -158,8 +158,8 @@ document.body.addEventListener('keydown',
     		  setTimeout(ballRadius, 10000)
     	  }
         item3Flag = false;
-        $('.box3').remove();
-        $('.item-name3').remove();
+        $('.box3').css('visibility','hidden');
+        $('.item-name3').css('visibility','hidden');
       }
     });
 

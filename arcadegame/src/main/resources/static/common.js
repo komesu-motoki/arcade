@@ -80,7 +80,7 @@ document.body.addEventListener('keydown',
     event => {
       if (event.key === 'z' && item1Flag) {
     	  if(itemName1 == 'ライフアップ'){
-    		  lives = lives + 2;
+    		  lives = lives + 1;
     	  }else if(itemName1 == 'スコアアップI') {
     		  score = score * 2;
     	  }else if(itemName1 == 'ハヤクナール') {
@@ -90,15 +90,15 @@ document.body.addEventListener('keydown',
     		  },5000)
     	  }
         item1Flag = false;
-        $('.box1').remove();
-        $('.item-name1').remove();
+        $('.box1').css('visibility','hidden');
+        $('.item-name1').css('visibility','hidden');
       }
     });
 document.body.addEventListener('keydown',
     event => {
       if (event.key === 'x' && item2Flag) {
     	  if(itemName2 == 'ライフアップ'){
-    		  lives = lives + 2;
+    		  lives = lives + 1;
     	  }else if(itemName2 == 'スコアアップI') {
     		  score = score * 2;
     	  }else if(itemName2 == 'ハヤクナール') {
@@ -108,15 +108,15 @@ document.body.addEventListener('keydown',
     		  },5000)
     	  }
         item2Flag = false;
-        $('.box2').remove();
-        $('.item-name2').remove();
+        $('.box2').css('visibility','hidden');
+        $('.item-name2').css('visibility','hidden');
       }
     });
 document.body.addEventListener('keydown',
     event => {
       if (event.key === 'c' && item3Flag) {
     	  if(itemName3 == 'ライフアップ'){
-    		  lives = lives + 2;
+    		  lives = lives + 1;
     	  }else if(itemName3 == 'スコアアップI') {
     		  score = score * 2;
     	  }else if(itemName3 == 'ハヤクナール') {
@@ -126,8 +126,8 @@ document.body.addEventListener('keydown',
     		  },5000)
     	  }
         item3Flag = false;
-        $('.box3').remove();
-        $('.item-name3').remove();
+        $('.box3').css('visibility','hidden');
+        $('.item-name3').css('visibility','hidden');
       }
     });
 

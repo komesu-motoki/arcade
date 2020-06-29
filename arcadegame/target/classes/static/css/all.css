@@ -238,7 +238,7 @@ table td{
 
 .form-select {
     font-weight: bold;
-    width: 130px;
+    width: 175px;
     font-size: 20px;
     outline: none;
     background: none;
@@ -275,7 +275,7 @@ table td{
 
 #form-div .game .form-select {
     margin-left: 50px;
-    width: 230px;
+    width: 275px;
     font-size: 35px;
 }
 
