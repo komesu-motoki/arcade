@@ -307,7 +307,7 @@ function drawScore() {
 function drawLives() {
   ctx.font = "30px Arial";
   ctx.fillStyle = "#fff";
-  ctx.fillText("Lives: "+lives, canvas.width-155, 30);
+  ctx.fillText("Life: "+lives, canvas.width-155, 30);
 }
 
 /* 描画 */
