@@ -15,4 +15,6 @@ public interface SalesDao {
 
 	public void marketOpen(Integer userId, Integer giveItem, Integer takeItem);
 
+	public List<Sales> itemWer(Integer saleId);
+
 }

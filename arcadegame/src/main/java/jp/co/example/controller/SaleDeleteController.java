@@ -17,6 +17,7 @@ import jp.co.example.entity.Sales;
 import jp.co.example.entity.UserInfo;
 import jp.co.example.service.ItemStocksService;
 import jp.co.example.service.SaleDeleteService;
+import jp.co.example.service.SaleService;
 
 @Controller
 public class SaleDeleteController {
@@ -25,7 +26,10 @@ public class SaleDeleteController {
 	HttpSession session;
 
 	@Autowired
-	private SaleDeleteService SaleDeleteService;
+	private SaleService saleService;
+
+	@Autowired
+	private SaleDeleteService saleDeleteService;
 
 	@Autowired
 	private ItemStocksService itemStocksService;
@@ -39,7 +43,7 @@ public class SaleDeleteController {
 
 		UserInfo user = (UserInfo) session.getAttribute("list");
 
-		List<Sales> list = SaleDeleteService.findAll(user.getUserId());
+		List<Sales> list = saleDeleteService.findAll(user.getUserId());
 		session.setAttribute("marketItem", list);
 
 		return "saleDelete";
@@ -65,7 +69,17 @@ public class SaleDeleteController {
 		}
 
 		for (int i = 0; i < saleList.size(); i++) {
-			SaleDeleteService.marketCancel(saleList.get(i));
+			if(saleService.itemWar(saleList.get(i)) == null || saleService.itemWar(saleList.get(i)).toString().isEmpty()){
+				model.addAttribute("msg", "アイテムは既に交換されました");
+				UserInfo user = (UserInfo) session.getAttribute("list");
+				List<Sales> list = saleDeleteService.findAll(user.getUserId());
+				session.setAttribute("marketItem", list);
+				return "saleDelete";
+			}
+		}
+
+		for (int i = 0; i < saleList.size(); i++) {
+			saleDeleteService.marketCancel(saleList.get(i));
 		}
 
 		UserInfo user = (UserInfo) session.getAttribute("list");

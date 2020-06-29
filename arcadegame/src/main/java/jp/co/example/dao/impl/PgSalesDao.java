@@ -91,4 +91,14 @@ public class PgSalesDao implements SalesDao {
 		param.addValue("TakeItem", takeItem);
 		jdbcTemplate.update(sql, param);
 	}
+
+	@Override
+	public List<Sales> itemWer(Integer saleId) {
+		String sql = "SELECT * FROM sales WHERE sale_id = :SaleId AND sale_flag = 1;";
+
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("SaleId", saleId);
+		List<Sales> result = jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<Sales>(Sales.class));
+		return result.isEmpty() ? null : result;
+	}
 }

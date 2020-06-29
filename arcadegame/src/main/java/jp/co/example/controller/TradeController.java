@@ -16,6 +16,7 @@ import jp.co.example.entity.ItemStocks;
 import jp.co.example.entity.Sales;
 import jp.co.example.entity.UserInfo;
 import jp.co.example.service.ItemStocksService;
+import jp.co.example.service.SaleService;
 import jp.co.example.service.TradeService;
 
 @Controller
@@ -26,6 +27,9 @@ public class TradeController {
 
 	@Autowired
 	private TradeService tradeService;
+
+	@Autowired
+	private SaleService saleService;
 
 	@Autowired
 	private ItemStocksService itemStocksService;
@@ -80,6 +84,16 @@ public class TradeController {
 			//アイテムがあるか確認
 			if (tradeService.tradeCheck(tradeList.get(i), user.getUserId()) == null) {
 				model.addAttribute("msg", "アイテムがありません");
+				return "trade";
+			}
+		}
+
+		for (int i = 0; i < tradeList.size(); i++) {
+			if(saleService.itemWar(tradeList.get(i)) == null || saleService.itemWar(tradeList.get(i)).toString().isEmpty()){
+				model.addAttribute("msg", "アイテムの出品は取り消されました");
+				//交換に出されているアイテムを取得
+				List<Sales> list = tradeService.marketTrade(user.getUserId());
+				session.setAttribute("marketItem", list);
 				return "trade";
 			}
 		}

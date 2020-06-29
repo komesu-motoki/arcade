@@ -9,6 +9,7 @@ import jp.co.example.dao.ItemDao;
 import jp.co.example.dao.ItemStocksDao;
 import jp.co.example.dao.SalesDao;
 import jp.co.example.entity.Items;
+import jp.co.example.entity.Sales;
 import jp.co.example.service.SaleService;
 
 @Service
@@ -36,5 +37,10 @@ public class SaleServiceImpl implements SaleService {
 	public void marketOpen(Integer userId, Integer giveItem,Integer takeItem) {
 		itemStocksDao.itemWast(userId,giveItem);
 		salesDao.marketOpen(userId,giveItem,takeItem);
+	}
+
+	@Override
+	public List<Sales> itemWar(Integer saleId) {
+		return salesDao.itemWer(saleId);
 	}
 }
