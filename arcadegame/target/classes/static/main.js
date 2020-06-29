@@ -19,7 +19,7 @@ var score = 0;
  ********************/
 var min = 20;
 var max = 301;
-var BAR_COLOR = 'blue'; //板の色
+var BAR_COLOR = '#FFF'; //板の色
 var BAR_HEIGHT = 15;  //板の高さ
 var BAR_WIDTH = 60; //板の幅
 let barX = (canvas.width - BAR_WIDTH) / 2;
