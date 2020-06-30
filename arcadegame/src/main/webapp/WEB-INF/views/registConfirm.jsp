@@ -22,7 +22,7 @@
         <div id="form-div">
             <div><label for="" class="form-item">ID</label><input type="text" class="text-design-id text-box" value="${sessionScope.loginId}" readonly></div><br>
             <div><label for="" class="form-item">名前</label><input type="text" class="text-design-name text-box" value="${sessionScope.userName}" readonly></div><br>
-            <div><label for="" class="form-item">PASS</label><input type="text" class="text-design-pass text-box" value="${sessionScope.password}" readonly></div>
+            <div><label for="" class="form-item">PASS</label><input type="password" class="text-design-pass text-box" value="${sessionScope.password}" readonly></div>
         </div>
     </div>
     <div id="form-btn-center"><button class="form-btn">登録</button></div>

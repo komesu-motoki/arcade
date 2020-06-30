@@ -18,20 +18,27 @@
 	<form:form action="regist3" modelAttribute="regist">
 		<div id="form-btn-center">
 			<div id="form-div">
-				<div>
-					<p class="form-item inline">ID</p>
-					<p class="text-design-id inline">${sessionScope.loginId}</p>
-				</div>
-				<br>
-				<div>
-					<p class="form-item inline">名前</p>
-					<p class="text-design-name inline">${sessionScope.userName}</p>
-				</div>
-				<br>
-				<div>
-					<p class="form-item inline">PASS</p>
-					<p class="text-design-pass inline">${sessionScope.password}</p>
-				</div>
+
+			<div>
+				<label for="" class="form-item">ID</label><input type="text"
+					class="text-design-id text-box" value="${sessionScope.loginId}"
+					readonly>
+			</div>
+			<br>
+			<div>
+				<label for="" class="form-item">名前</label><input type="text"
+					class="text-design-name text-box" value="${sessionScope.userName}"
+					readonly>
+
+			</div>
+			<br>
+			<div>
+				<label for="" class="form-item">PASS</label><input type="password"
+					class="text-design-pass text-box" value="${sessionScope.password}"
+					readonly>
+			</div>
+
+
 			</div>
 		</div>
 		<div id="form-btn-center">
