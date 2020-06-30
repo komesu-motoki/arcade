@@ -54,6 +54,12 @@ public class TradeController {
 		UserInfo user = (UserInfo) session.getAttribute("list");
 		//交換に出されているアイテムを取得
 		List<Sales> list = tradeService.marketTrade(user.getUserId());
+
+		if (list == null || list.size() == 0) {
+			session.setAttribute("marketItem", list);
+			model.addAttribute("msg", "トレードに出されているアイテムはありません");
+			return "trade";
+		}
 		session.setAttribute("marketItem", list);
 
 		return "trade";
@@ -75,7 +81,7 @@ public class TradeController {
 		}
 
 		if (tradeList.size() == 0) {
-			model.addAttribute("msg", "アイテムを選択してください");
+			model.addAttribute("no", "アイテムを選択してください");
 			return "trade";
 
 		}
@@ -83,16 +89,22 @@ public class TradeController {
 		for (int i = 0; i < tradeList.size(); i++) {
 			//アイテムがあるか確認
 			if (tradeService.tradeCheck(tradeList.get(i), user.getUserId()) == null) {
-				model.addAttribute("msg", "アイテムがありません");
+				model.addAttribute("no", "アイテムがありません");
 				return "trade";
 			}
 		}
 
 		for (int i = 0; i < tradeList.size(); i++) {
-			if(saleService.itemWar(tradeList.get(i)) == null || saleService.itemWar(tradeList.get(i)).toString().isEmpty()){
-				model.addAttribute("msg", "アイテムの出品は取り消されました");
+			if(saleService.itemWar(tradeList.get(i)) == null || saleService.itemWar(tradeList.get(i)).size() == 0){
+				model.addAttribute("no", "アイテムの出品が既に取り消されました");
+
+
 				//交換に出されているアイテムを取得
 				List<Sales> list = tradeService.marketTrade(user.getUserId());
+
+				if(list == null || list.size() == 0) {
+					model.addAttribute("flag", "フラグ");
+				}
 				session.setAttribute("marketItem", list);
 				return "trade";
 			}

@@ -21,12 +21,14 @@
 		class="returnbtn"></a>
 
 	<c:choose>
-		<c:when test="${empty marketItem}">
-			<p class="confirm-msg">出品しているアイテムはありません</p>
+		<c:when test="${not empty msg}">
+			<p class="confirm-msg">${fn:escapeXml(msg)}</p>
 		</c:when>
 		<c:otherwise>
 
-			<p class="confirm-msg">${fn:escapeXml(msg)}</p>
+			<p class="confirm-msg">${fn:escapeXml(no)}</p>
+
+			<c:if test="${empty flag}">
 
 			<form:form action="saleDeleteResult" modelAttribute="SaleDeleteForm">
 				<table>
@@ -56,6 +58,7 @@
 					<button class="form-btn" style="width: 200px;">出品を取り消す</button>
 				</div>
 			</form:form>
+			</c:if>
 		</c:otherwise>
 	</c:choose>
 </body>

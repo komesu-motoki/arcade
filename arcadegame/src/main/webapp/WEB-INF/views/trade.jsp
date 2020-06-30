@@ -21,42 +21,45 @@
 		class="returnbtn"></a>
 
 	<c:choose>
-		<c:when test="${empty marketItem}">
-			<p class="confirm-msg">トレードに出されているアイテムはありません</p>
+		<c:when test="${not empty msg}">
+			<p class="confirm-msg">${fn:escapeXml(msg)}</p>
 		</c:when>
 		<c:otherwise>
 
-			<p class="confirm-msg">${fn:escapeXml(msg)}</p>
+			<p class="confirm-msg">${fn:escapeXml(no)}</p>
 
-			<form:form action="tradeResult" modelAttribute="TradeForm">
-				<table>
-					<tr>
-						<th></th>
-						<th>出品者名</th>
-						<th>ゲーム名</th>
-						<th>出品アイテム</th>
-						<th>欲しいアイテム</th>
-					</tr>
-					<c:forEach var="market" items="${marketItem}">
+			<c:if test="${empty flag}">
+
+				<form:form action="tradeResult" modelAttribute="TradeForm">
+					<table>
 						<tr>
-							<td><form:checkbox value="${market.saleId}" path="trade"
-									style="width: 20px; height: 20px;" /></td>
-
-
-							<td>${market.userName}</td>
-							<td>${market.gameName}</td>
-							<td>${market.giveName}</td>
-							<td>${market.takeName}</td>
+							<th></th>
+							<th>出品者名</th>
+							<th>ゲーム名</th>
+							<th>出品アイテム</th>
+							<th>欲しいアイテム</th>
 						</tr>
+						<c:forEach var="market" items="${marketItem}">
+							<tr>
+								<td><form:checkbox value="${market.saleId}" path="trade"
+										style="width: 20px; height: 20px;" /></td>
 
-					</c:forEach>
 
-				</table>
+								<td>${market.userName}</td>
+								<td>${market.gameName}</td>
+								<td>${market.giveName}</td>
+								<td>${market.takeName}</td>
+							</tr>
 
-				<div id="form-btn-center">
-					<button class="form-btn" style="width: 200px;">交換に応じる</button>
-				</div>
-			</form:form>
+						</c:forEach>
+
+					</table>
+
+					<div id="form-btn-center">
+						<button class="form-btn" style="width: 200px;">交換に応じる</button>
+					</div>
+				</form:form>
+			</c:if>
 		</c:otherwise>
 	</c:choose>
 </body>

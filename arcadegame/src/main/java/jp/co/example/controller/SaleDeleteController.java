@@ -44,6 +44,12 @@ public class SaleDeleteController {
 		UserInfo user = (UserInfo) session.getAttribute("list");
 
 		List<Sales> list = saleDeleteService.findAll(user.getUserId());
+
+		if (list == null || list.size() == 0) {
+			session.setAttribute("marketItem", list);
+			model.addAttribute("msg", "出品しているアイテムはありません");
+			return "saleDelete";
+		}
 		session.setAttribute("marketItem", list);
 
 		return "saleDelete";
@@ -63,17 +69,22 @@ public class SaleDeleteController {
 		}
 
 		if (saleList.size() == 0) {
-			model.addAttribute("msg", "アイテムを選択してください");
+			model.addAttribute("no", "アイテムを選択してください");
 			return "saleDelete";
 
 		}
 
 		for (int i = 0; i < saleList.size(); i++) {
-			if(saleService.itemWar(saleList.get(i)) == null || saleService.itemWar(saleList.get(i)).toString().isEmpty()){
-				model.addAttribute("msg", "アイテムは既に交換されました");
+			if(saleService.itemWar(saleList.get(i)) == null || saleService.itemWar(saleList.get(i)).size() == 0){
+				model.addAttribute("no", "アイテムが既に交換されました");
 
 				UserInfo user = (UserInfo) session.getAttribute("list");
 				List<Sales> list = saleDeleteService.findAll(user.getUserId());
+
+				if(list == null || list.size() == 0) {
+					model.addAttribute("flag", "フラグ");
+				}
+
 				session.setAttribute("marketItem", list);
 
 				return "saleDelete";
