@@ -71,10 +71,10 @@ public class SaleDeleteController {
 		for (int i = 0; i < saleList.size(); i++) {
 			if(saleService.itemWar(saleList.get(i)) == null || saleService.itemWar(saleList.get(i)).toString().isEmpty()){
 				model.addAttribute("msg", "アイテムは既に交換されました");
+
 				UserInfo user = (UserInfo) session.getAttribute("list");
-				Integer userId = user.getUserId();
-				List<ItemStocks> list = itemStocksService.findStockAll(userId);
-				session.setAttribute("StockAll", list);
+				List<Sales> list = saleDeleteService.findAll(user.getUserId());
+				session.setAttribute("marketItem", list);
 
 				return "saleDelete";
 			}
